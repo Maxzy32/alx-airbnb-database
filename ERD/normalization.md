@@ -10,7 +10,7 @@ This document explains the normalization process applied to our Airbnb-like data
 - Each record is uniquely identified by a primary key.
 - There are no repeating groups or arrays.
 
-✅ **All tables satisfy 1NF.**
+ **All tables satisfy 1NF.**
 
 ---
 
@@ -20,7 +20,7 @@ This document explains the normalization process applied to our Airbnb-like data
 - No partial dependency exists, as most tables use a single-attribute primary key (e.g., `user_id`, `property_id`, etc.).
 - Composite keys (like `sender_id` + `recipient_id`) are not used.
 
-✅ **All tables satisfy 2NF.**
+ **All tables satisfy 2NF.**
 
 ---
 
@@ -33,5 +33,10 @@ Examples:
 - `email`, `first_name`, `role`, etc., all depend only on `user_id`.
 - In `Booking`, `total_price`, `start_date`, `status` depend only on `booking_id`.
 
+ **All tables satisfy 3NF.**
 
+---
 
+## Conclusion
+
+The Airbnb database has been carefully designed to eliminate redundancy and improve consistency. After thorough analysis, we confirm that the schema adheres to **Third Normal Form (3NF)**.
