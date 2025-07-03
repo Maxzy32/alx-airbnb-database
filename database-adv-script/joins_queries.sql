@@ -17,6 +17,7 @@ INNER JOIN
     User u ON b.user_id = u.user_id;
 
 
+
 -- 2. LEFT JOIN: Retrieve all properties and their reviews, including properties with no reviews
 SELECT 
     p.property_id,
@@ -29,6 +30,7 @@ FROM
     Property p
 LEFT JOIN 
     Review r ON p.property_id = r.property_id;
+
 
 
     -- 3. FULL OUTER JOIN: Retrieve all users and all bookings, even if the user has no booking or a booking is not linked to a user
@@ -47,31 +49,4 @@ FULL OUTER JOIN
     Booking b ON u.user_id = b.user_id;
 
 
--- MySQL equivalent of FULL OUTER JOIN
-SELECT 
-    u.user_id,
-    u.first_name,
-    u.last_name,
-    b.booking_id,
-    b.property_id,
-    b.start_date,
-    b.end_date,
-    b.status
-FROM 
-    User u
-LEFT JOIN Booking b ON u.user_id = b.user_id
 
-UNION
-
-SELECT 
-    u.user_id,
-    u.first_name,
-    u.last_name,
-    b.booking_id,
-    b.property_id,
-    b.start_date,
-    b.end_date,
-    b.status
-FROM 
-    User u
-RIGHT JOIN Booking b ON u.user_id = b.user_id;
