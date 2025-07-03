@@ -25,11 +25,14 @@ SELECT
     p.location,
     r.review_id,
     r.rating,
-    r.comment
+    r.comment,
+    r.created_at
 FROM 
     Property p
 LEFT JOIN 
-    Review r ON p.property_id = r.property_id;
+    Review r ON p.property_id = r.property_id
+ORDER BY p.name;
+
 
 
 
@@ -50,3 +53,31 @@ FULL OUTER JOIN
 
 
 
+-- MySQL equivalent of FULL OUTER JOIN
+SELECT 
+    u.user_id,
+    u.first_name,
+    u.last_name,
+    b.booking_id,
+    b.property_id,
+    b.start_date,
+    b.end_date,
+    b.status
+FROM 
+    User u
+LEFT JOIN Booking b ON u.user_id = b.user_id
+
+UNION
+
+SELECT 
+    u.user_id,
+    u.first_name,
+    u.last_name,
+    b.booking_id,
+    b.property_id,
+    b.start_date,
+    b.end_date,
+    b.status
+FROM 
+    User u
+RIGHT JOIN Booking b ON u.user_id = b.user_id;
