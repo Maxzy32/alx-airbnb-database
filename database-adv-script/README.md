@@ -40,3 +40,39 @@ Returns users who have made more than 3 bookings.
 - If count > 3, the user is included in the result.
 
 ---
+
+
+
+
+# Aggregations and Window Functions – Airbnb Clone
+
+This file documents two key SQL operations for analyzing Airbnb data.
+
+---
+
+## 🔹 1. Aggregation: Bookings Per User
+
+**Query**: Uses `COUNT()` and `GROUP BY` to count how many bookings each user has made.
+
+```sql
+SELECT u.user_id, ..., COUNT(b.booking_id)
+FROM User u
+LEFT JOIN Booking b ON ...
+GROUP BY ...
+
+
+# Aggregations and Window Functions – Airbnb Clone
+
+This file documents two key SQL operations for analyzing Airbnb data.
+
+---
+
+## 🔹 1. Aggregation: Bookings Per User
+
+**Query**: Uses `COUNT()` and `GROUP BY` to count how many bookings each user has made.
+
+```sql
+SELECT u.user_id, ..., COUNT(b.booking_id)
+FROM User u
+LEFT JOIN Booking b ON ...
+GROUP BY ...
