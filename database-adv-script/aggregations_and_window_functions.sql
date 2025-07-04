@@ -28,7 +28,7 @@ GROUP BY
 ORDER BY 
     rank;
 
-
+ 
 
 SELECT 
     property_id,
