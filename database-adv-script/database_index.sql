@@ -12,3 +12,20 @@ CREATE INDEX idx_property_location ON Property(location);
 
 -- Index on Property.pricepernight for sorting
 CREATE INDEX idx_property_price ON Property(pricepernight);
+
+-- Analyze performance of a login query
+EXPLAIN ANALYZE
+SELECT * FROM User WHERE email = 'user@example.com';
+
+-- Analyze performance of a JOIN query
+EXPLAIN ANALYZE
+SELECT 
+    b.booking_id,
+    b.start_date,
+    b.end_date,
+    u.first_name,
+    u.last_name
+FROM 
+    Booking b
+JOIN 
+    User u ON b.user_id = u.user_id;
