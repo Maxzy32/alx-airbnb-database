@@ -1,4 +1,4 @@
--- Initial unoptimized query (all joins, full data)
+-- Initial unoptimized query (retrieves booking + user + property + payment)
 EXPLAIN ANALYZE
 SELECT 
     b.booking_id,
@@ -24,10 +24,13 @@ JOIN
 JOIN 
     Property p ON b.property_id = p.property_id
 LEFT JOIN 
-    Payment pay ON b.booking_id = pay.booking_id;
+    Payment pay ON b.booking_id = pay.booking_id
+WHERE 
+    b.status = 'confirmed'
+    AND b.start_date >= '2024-01-01'
+    AND p.location = 'Accra';
 
--- Optimized version
--- Only select what is necessary, and use indexed columns
+-- Optimized version (fewer columns, still includes WHERE and AND)
 EXPLAIN ANALYZE
 SELECT 
     b.booking_id,
@@ -44,4 +47,8 @@ JOIN
 JOIN 
     Property p ON b.property_id = p.property_id
 LEFT JOIN 
-    Payment pay ON b.booking_id = pay.booking_id;
+    Payment pay ON b.booking_id = pay.booking_id
+WHERE 
+    b.status = 'confirmed'
+    AND b.start_date >= '2024-01-01'
+    AND p.location = 'Accra';
